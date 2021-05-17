@@ -7,10 +7,8 @@ async function request(session, name, content = {})
     session.request += 2;
 
     const disableIV = session.request === 1;
-
     const order = cipher(session, session.request, { disableIV });
     const url = `${session.server}appelfonction/${session.type.id}/${session.id}/${order}`;
-
     let data = content;
     if (!session.disableAES) {
         data = cipher(session, JSON.stringify(content), { compress: true, disableIV });
@@ -26,7 +24,6 @@ async function request(session, name, content = {})
             donneesSec: data
         }
     });
-
     if (result.Erreur) {
         const { Titre, Message } = result.Erreur;
 
@@ -39,7 +36,6 @@ async function request(session, name, content = {})
 
         throw errors.PRONOTE.drop({ title: Titre, message: Message });
     }
-
     if (!session.disableAES) {
         return JSON.parse(decipher(session, result.donneesSec, { compress: true }));
     }

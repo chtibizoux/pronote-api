@@ -19,7 +19,6 @@ async function login({ url, username, password, startURL, wayfURL, atenURL, extr
         runScripts: true,
         hook: aten.hook
     });
-
     dom = await aten.submit({
         dom,
         jar,
@@ -27,7 +26,6 @@ async function login({ url, username, password, startURL, wayfURL, atenURL, extr
         password,
         atenURL
     });
-
     return extractStart(dom);
 }
 

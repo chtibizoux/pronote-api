@@ -28,14 +28,11 @@ function decipher(session, data, { compress, scrambled, key, asBytes } = {})
 {
     const cipher = createCipher(session, key, true);
     cipher.update(new forge.util.ByteBuffer(forge.util.hexToBytes(data)));
-
     let result = cipher.finish() && cipher.output.bytes();
     if (compress && !session.disableCompress) {
         result = inflate(result);
     }
-
     result = forge.util.decodeUtf8(result);
-
     if (scrambled) {
         const unscrambled = new Array(result.length);
         for (let i = 0; i < result.length; i += 1) {
@@ -46,7 +43,6 @@ function decipher(session, data, { compress, scrambled, key, asBytes } = {})
 
         return unscrambled.join('');
     }
-
     if (asBytes) {
         const buffer = new forge.util.ByteBuffer();
         const split = result.split(',');

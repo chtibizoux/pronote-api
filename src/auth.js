@@ -17,6 +17,7 @@ async function login(url, username, password, cas, account)
 {
     const server = getServer(url);
     const start = await getStart(server, username, password, cas, account);
+    console.log(start);
     const session = new PronoteSession({
         serverURL: server,
         sessionID: start.h,
@@ -29,7 +30,6 @@ async function login(url, username, password, cas, account)
         keyModulus: start.MR,
         keyExponent: start.ER
     })
-
     session.params = await getParams(session);
     if (!session.params) {
         throw errors.WRONG_CREDENTIALS.drop();
@@ -62,7 +62,6 @@ async function getStart(url, username, password, casName, type)
     if (casName === 'names' || casName === 'getCAS' || !cas[casName]) {
         throw errors.UNKNOWN_CAS.drop(casName);
     }
-
     const account = typeof type === 'string' ? getAccountType(type) : type;
     return await cas[casName](url, account, username, password);
 }
@@ -85,6 +84,7 @@ async function auth(session, username, password, fromCas)
     }
 
     session.aesKey = decipher(session, userKey, { key, asBytes: true });
+    console.log(session.aesKey, key, id);
 }
 
 module.exports = {
