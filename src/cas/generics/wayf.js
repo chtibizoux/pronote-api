@@ -8,7 +8,7 @@ async function login({ url, username, password, startURL, wayfURL, atenURL, extr
     const jar = new jsdom.CookieJar();
 
     let dom = await getDOM({
-        url: `${startURL}login?service=${encodeURIComponent(url)}`,
+        url: `${startURL}login?service=${encodeURIComponent(url + "eleve.html")}`,
         jar
     });
 
