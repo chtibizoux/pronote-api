@@ -10,11 +10,13 @@ async function login({ url, account, username, password, casUrl, idp, atenURL })
     }
 
     casUrl = `https://${casUrl}/`;
+
     const jar = new jsdom.CookieJar();
     let dom = await getDOM({
         url: `${casUrl}login?${idp ? `selection=${idp}&` : ''}service=${encodeURIComponent(url)}`,
         jar
     });
+
     if (atenURL) {
         dom = await submitForm({
             dom,
@@ -36,6 +38,7 @@ async function login({ url, account, username, password, casUrl, idp, atenURL })
             asIs: true
         });
     }
+
     return extractStart(await getDOM({ url: url + account.value + '.html', jar, asIs: true }));
 }
 

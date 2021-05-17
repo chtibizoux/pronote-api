@@ -46,11 +46,13 @@ async function submit({ dom, jar, username, password, atenURL })
     dom.window.document.getElementById('password').value = password;
 
     dom.window.eval('creerCookie(document.getElementById(\'user\'), document.getElementById(\'password\'));');
+
     const result = await submitForm({
         dom,
         jar,
         actionRoot: `https://${atenURL}/login/`
     });
+
     if (result.window.document.getElementById('aten-auth')) {
         throw errors.WRONG_CREDENTIALS.drop();
     }

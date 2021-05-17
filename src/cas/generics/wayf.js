@@ -8,7 +8,7 @@ async function login({ url, username, password, startURL, wayfURL, atenURL, extr
     const jar = new jsdom.CookieJar();
 
     let dom = await getDOM({
-        url: `${startURL}login?service=${encodeURIComponent(url + "eleve.html")}`,
+        url: `${startURL}login?service=${encodeURIComponent(url + 'eleve.html')}`,
         jar
     });
 
@@ -19,6 +19,7 @@ async function login({ url, username, password, startURL, wayfURL, atenURL, extr
         runScripts: true,
         hook: aten.hook
     });
+
     dom = await aten.submit({
         dom,
         jar,
@@ -26,6 +27,7 @@ async function login({ url, username, password, startURL, wayfURL, atenURL, extr
         password,
         atenURL
     });
+
     return extractStart(dom);
 }
 
