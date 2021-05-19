@@ -18,7 +18,7 @@ function fromPronote({ N, L, G, ...obj } = {}, fn = null, gName = 'type') {
 
     return {
         ...result,
-        ...(fn ? fn(G && gName ? obj : { G, ...obj }) : {})
+        ...(fn ? fn(G && gName ? obj : { N, G, ...obj }) : {})
     };
 }
 

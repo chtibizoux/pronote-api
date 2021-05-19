@@ -21,13 +21,13 @@ async function homeworks(session, user, from = new Date(), to = null)
     }
 
     const result = [];
-
     for (const homework of homeworks) {
         if (homework.for < from || homework.for > to) {
             continue;
         }
 
         result.push(withId({
+            pronoteId: homework.id,
             description: fromHTML(homework.description),
             htmlDescription: homework.description,
             subject: homework.subject.name,

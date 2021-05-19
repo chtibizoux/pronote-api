@@ -22,11 +22,11 @@ async function getHomeworks(session, user, fromWeek = 1, toWeek = null)
     if (!homeworks) {
         return null;
     }
-
     return parse(homeworks.ListeTravauxAFaire, ({
-        descriptif, PourLe, TAFFait, niveauDifficulte, duree, cours, DonneLe,
+        N, descriptif, PourLe, TAFFait, niveauDifficulte, duree, cours, DonneLe,
         Matiere, CouleurFond, ListePieceJointe
     }) => ({
+        id: N,
         description: parse(descriptif),
         lesson: parse(cours),
         subject: parse(Matiere),
