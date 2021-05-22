@@ -23,6 +23,11 @@ const getMenu = require('./src/fetch/pronote/menu');
 const getFiles = require('./src/fetch/pronote/files');
 
 const setHomeworksDone = require('./src/fetch/pronote/homeworksDone');
+const getCommunicationResources = require('./src/fetch/pronote/communicationResources');
+const getMessagingList = require('./src/fetch/pronote/messagingList');
+const getMessageList = require('./src/fetch/pronote/messageList');
+const setSendMessage = require('./src/fetch/pronote/sendMessage');
+const getPersonalInformations = require('./src/fetch/pronote/personalInformations');
 
 const navigate = require('./src/fetch/pronote/navigate');
 const keepAlive = require('./src/fetch/pronote/keepAlive');
@@ -63,6 +68,11 @@ module.exports = {
     fetchFiles: getFiles,
 
     fetchHomeworksDone: setHomeworksDone,
+    fetchCommunicationResources: getCommunicationResources,
+    fetchMessagingList: getMessagingList,
+    fetchMessageList: getMessageList,
+    fetchSendMessage: setSendMessage,
+    fetchPersonalInformations: getPersonalInformations,
 
     navigate,
     keepAlive,
