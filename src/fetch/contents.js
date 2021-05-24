@@ -34,7 +34,7 @@ async function contents(session, user, from = new Date(), to = null)
             from: lesson.from,
             to: lesson.to,
             color: lesson.color,
-            title: content.name || "",
+            title: content.name || '',
             description: fromHTML(content.description),
             htmlDescription: content.htmlDescription,
             files: content.files.map(f => withId({ name: f.name, url: getFileURL(session, f) }, ['name'])),
