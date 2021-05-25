@@ -36,22 +36,23 @@ async function contents(session, user, from = new Date(), to = null)
                 to: lesson.to,
                 color: lesson.color
             }, ['subject', 'from', 'to']));
+        } else {
+            result.push(withId({
+                subject: lesson.subject.name,
+                teachers: lesson.teachers.map(t => t.name),
+                from: lesson.from,
+                to: lesson.to,
+                color: lesson.color,
+                title: content.name,
+                description: fromHTML(content.description),
+                htmlDescription: content.htmlDescription,
+                files: content.files.map(f => withId({
+                    name: f.name,
+                    url: getFileURL(session, f)
+                }, ['name'])),
+                category: content.category.name
+            }, ['subject', 'from', 'to']));
         }
-        result.push(withId({
-            subject: lesson.subject.name,
-            teachers: lesson.teachers.map(t => t.name),
-            from: lesson.from,
-            to: lesson.to,
-            color: lesson.color,
-            title: content.name || '',
-            description: fromHTML(content.description),
-            htmlDescription: content.htmlDescription,
-            files: content.files.map(f => withId({
-                name: f.name,
-                url: getFileURL(session, f)
-            }, ['name'])),
-            category: content.category.name
-        }, ['subject', 'from', 'to']));
     }
 
     return checkDuplicates(result).sort((a, b) => a.from - b.from);
