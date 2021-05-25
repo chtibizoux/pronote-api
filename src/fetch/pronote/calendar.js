@@ -16,7 +16,7 @@ async function getCalendar(session, user)
         return null;
     }
     const result = [];
-    for (const event of calendar) {
+    for (const event of calendar.ListeEvenements) {
         result.push({
             from: parse(event.DateDebut),
             to: parse(event.DateFin),
