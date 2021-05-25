@@ -17,6 +17,8 @@ const messagingList = require('./fetch/messagingList');
 const messageList = require('./fetch/messageList');
 const sendMessage = require('./fetch/sendMessage');
 const personalInformations = require('./fetch/personalInformations');
+const calendar = require('./fetch/calendar');
+
 
 const keepAlive = require('./fetch/pronote/keepAlive');
 const logout = require('./fetch/pronote/logout');
@@ -28,7 +30,7 @@ const GENERAL_REQUESTS = {
 const REQUESTS = {
     timetable, marks, evaluations, absences, contents,
     infos, homeworks, menu, files, homeworksDone, communicationResources,
-    messagingList, messageList, sendMessage, personalInformations
+    messagingList, messageList, sendMessage, personalInformations, calendar
 };
 
 class PronoteSession

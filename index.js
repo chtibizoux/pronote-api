@@ -28,6 +28,7 @@ const getMessagingList = require('./src/fetch/pronote/messagingList');
 const getMessageList = require('./src/fetch/pronote/messageList');
 const setSendMessage = require('./src/fetch/pronote/sendMessage');
 const getPersonalInformations = require('./src/fetch/pronote/personalInformations');
+const getCalendar = require('./src/fetch/pronote/calendar');
 
 const navigate = require('./src/fetch/pronote/navigate');
 const keepAlive = require('./src/fetch/pronote/keepAlive');
@@ -73,6 +74,7 @@ module.exports = {
     fetchMessageList: getMessageList,
     fetchSendMessage: setSendMessage,
     fetchPersonalInformations: getPersonalInformations,
+    fetchCalendar: getCalendar,
 
     navigate,
     keepAlive,
