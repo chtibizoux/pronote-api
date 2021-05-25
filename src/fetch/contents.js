@@ -27,7 +27,7 @@ async function contents(session, user, from = new Date(), to = null)
             continue;
         }
 
-        const content = lesson.content[0]; // Maybe on some instances there will be multiple entries ? Check this
+        const content = lesson.content[0];
         if (!content) {
             result.push(withId({
                 subject: lesson.subject.name,
