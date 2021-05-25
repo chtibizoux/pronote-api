@@ -28,6 +28,15 @@ async function contents(session, user, from = new Date(), to = null)
         }
 
         const content = lesson.content[0]; // Maybe on some instances there will be multiple entries ? Check this
+        if (!content) {
+            result.push(withId({
+                subject: lesson.subject.name,
+                teachers: lesson.teachers.map(t => t.name),
+                from: lesson.from,
+                to: lesson.to,
+                color: lesson.color
+            }, ['subject', 'from', 'to']));
+        }
         result.push(withId({
             subject: lesson.subject.name,
             teachers: lesson.teachers.map(t => t.name),
@@ -37,7 +46,10 @@ async function contents(session, user, from = new Date(), to = null)
             title: content.name || '',
             description: fromHTML(content.description),
             htmlDescription: content.htmlDescription,
-            files: content.files.map(f => withId({ name: f.name, url: getFileURL(session, f) }, ['name'])),
+            files: content.files.map(f => withId({
+                name: f.name,
+                url: getFileURL(session, f)
+            }, ['name'])),
             category: content.category.name
         }, ['subject', 'from', 'to']));
     }
