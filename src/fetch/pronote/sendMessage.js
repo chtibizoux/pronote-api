@@ -26,6 +26,7 @@ async function setSendMessage(session, user, object = '', content = '', files = 
         return null;
     }
     return message;
+    // J'ai pas tester
     // return {
     //     messageList: parse(list.listeMessages, ({
     //         messageSource, possessionMessage, estNonPossede, contenu, estHTML, libelleDate,

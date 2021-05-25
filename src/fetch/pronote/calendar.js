@@ -15,16 +15,18 @@ async function getCalendar(session, user)
     if (!calendar) {
         return null;
     }
-    return parse(calendar.ListeEvenements, ({
-        DateDebut, DateFin, Commentaire, estConseilClasse, CouleurCellule, estPeriodique
-    }) => ({
-        from: parse(DateDebut),
-        to: parse(DateFin),
-        comment: Commentaire,
-        isClassCouncil: estConseilClasse,
-        color: CouleurCellule,
-        dateLabel: estPeriodique
-    }));
+    const result = [];
+    for (const event of calendar) {
+        result.push({
+            from: parse(event.DateDebut),
+            to: parse(event.DateFin),
+            comment: event.Commentaire,
+            isClassCouncil: event.estConseilClasse,
+            color: event.CouleurCellule,
+            dateLabel: event.estPeriodique
+        });
+    }
+    return result;
     // JSP ce que c'est DomaineDePresence et listeJourDansMois
 }
 
