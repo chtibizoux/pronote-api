@@ -5,7 +5,6 @@ const navigate = require('./navigate');
 const PAGE_NAME = 'PageAgenda';
 const TAB_ID = 9;
 const ACCOUNTS = ['student', 'parent'];
-// eslint-disable-next-line max-len
 async function getCalendar(session, user)
 {
     const calendar = await navigate(session, user, PAGE_NAME, TAB_ID, ACCOUNTS, {

@@ -1,9 +1,7 @@
 const getCalendar = require('./pronote/calendar');
-// eslint-disable-next-line max-len
-async function calendar(session, user, ownMessages = [], markAsRead = true, viewedMessagesNumber = 30, isNotPossessed = false)
+async function calendar(session, user)
 {
-    // eslint-disable-next-line max-len
-    const calendar = await getCalendar(session, user, ownMessages, markAsRead, viewedMessagesNumber, isNotPossessed);
+    const calendar = await getCalendar(session, user);
     if (!calendar) {
         return null;
     }

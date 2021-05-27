@@ -1,6 +1,6 @@
 function getPeriodBy(session, period, type = null)
 {
-    const Type = ['trimester', 'semester', 'year'];
+    const Type = ['trimester', 'semester', 'year', 'other'];
     const periods = session.params.periods;
     if (!type || Type.indexOf(type) === -1) {
         type = 'trimester'
