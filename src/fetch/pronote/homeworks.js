@@ -24,7 +24,7 @@ async function getHomeworks(session, user, fromWeek = 1, toWeek = null)
     }
     return parse(homeworks.ListeTravauxAFaire, ({
         N, descriptif, PourLe, TAFFait, niveauDifficulte, duree, cours, DonneLe,
-        Matiere, CouleurFond, ListePieceJointe
+        Matiere, CouleurFond, ListePieceJointe, avecRendu, genreRendu, peuRendre
     }) => ({
         id: N,
         description: parse(descriptif),
@@ -36,7 +36,10 @@ async function getHomeworks(session, user, fromWeek = 1, toWeek = null)
         difficultyLevel: niveauDifficulte,
         duration: duree,
         color: CouleurFond,
-        files: parse(ListePieceJointe)
+        files: parse(ListePieceJointe),
+        withGiveBack: avecRendu,
+        kindGiveBack: genreRendu,
+        canGiveBack: peuRendre
     }));
 }
 
