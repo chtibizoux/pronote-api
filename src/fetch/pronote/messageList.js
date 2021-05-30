@@ -1,5 +1,6 @@
 const parse = require('../../data/types');
 const { toPronote } = require('../../data/objects');
+const fromHTML = require('../../data/html');
 
 const navigate = require('./navigate');
 
@@ -32,7 +33,8 @@ async function getMessageList(session, user, ownMessages = [], markAsRead = true
             sourceMessage: parse(messageSource),
             possessionMessage: parse(possessionMessage),
             isNotPossessed: estNonPossede,
-            content: parse(contenu),
+            htmlContent: parse(contenu),
+            content: fromHTML(parse(contenu)),
             isHTML: estHTML,
             dateLabel: libelleDate,
             date: parse(date),
