@@ -32,6 +32,7 @@ async function getMessagingList(session, user, readMessage = true)
             isNotPossessed: estNonPossede,
             read: lu,
             dateLabel: libelleDate,
+            date: parse({ _T: 7, V: libelleDate }),
             depth: profondeur
         })),
         superUserString: parse(list.strSuperUtilisateurs)
