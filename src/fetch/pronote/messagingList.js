@@ -29,9 +29,9 @@ async function getMessagingList(session, user, readMessage = true)
             publicNumber: nbPublic,
             lastPossessionMessage: parse(dernierPossessionMessage),
             messageWindow: parse(messageFenetre),
-            isNoPossessed: estNonPossede,
+            isNotPossessed: estNonPossede,
             read: lu,
-            dateLabel: libelleDate,
+            date: parse(libelleDate),
             depth: profondeur
         })),
         superUserString: parse(list.strSuperUtilisateurs)
