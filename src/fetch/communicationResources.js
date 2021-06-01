@@ -1,4 +1,5 @@
 const getCommunicationResources = require('./pronote/communicationResources');
+const { checkDuplicates } = require('../data/id');
 
 async function communicationResources(session, user, wording = 'Professeurs')
 {
@@ -7,7 +8,7 @@ async function communicationResources(session, user, wording = 'Professeurs')
         return null;
     }
 
-    return resources;
+    return checkDuplicates(resources);
 }
 
 module.exports = communicationResources;
