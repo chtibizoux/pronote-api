@@ -5,13 +5,12 @@ const PAGE_NAME = 'ListeRessourcesPourCommunication';
 const TAB_ID = 7;
 const ACCOUNTS = ['student', 'parent'];
 
-async function getCommunicationResources(session, user, wording = 'Professeurs')
+async function getCommunicationResources(session, user)
 {
     const resources = await navigate(session, user, PAGE_NAME, TAB_ID, ACCOUNTS, {
         onglet: {
             N: 0,
-            G: 3,
-            L: wording
+            G: 3
         },
         filtreElement: {
             N: 0,
@@ -24,8 +23,8 @@ async function getCommunicationResources(session, user, wording = 'Professeurs')
     }
 
     return parse(resources.listeRessourcesPourCommunication, ({ listeRessources, estPrincipal, avecDiscussion }) => ({
-        isPrincipal: parse(estPrincipal),
-        withDiscussion: parse(avecDiscussion),
+        isPrincipal: estPrincipal,
+        withDiscussion: avecDiscussion,
         RessourceList: parse(listeRessources)
     }));
 }
