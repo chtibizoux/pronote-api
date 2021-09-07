@@ -10,21 +10,42 @@ async function getInfos(session, user)
     const infos = await navigate(session, user, PAGE_NAME, TAB_ID, ACCOUNTS, {
         estAuteur: false
     });
-
     if (!infos) {
         return null;
     }
-
     return {
         categories: parse(infos.listeCategories, ({ estDefaut }) => ({
             isDefault: estDefaut
         })),
-        infos: parse(infos.listeActualites, ({ dateDebut, elmauteur, listeQuestions }) => ({
+        infos: parse(infos.listeActualites, ({
+            dateDebut,
+            elmauteur,
+            listeQuestions
+        }) => ({
             date: parse(dateDebut),
             author: parse(elmauteur),
-            content: parse(listeQuestions, ({ texte, listePiecesJointes }) => ({
+            content: parse(listeQuestions, ({
+                texte,
+                listePiecesJointes,
+                listeChoix,
+                reponse,
+                tailleReponse,
+                genreReponse,
+                nombreReponsesMax,
+                avecMaximum
+            }) => ({
                 text: parse(texte),
-                files: parse(listePiecesJointes)
+                files: parse(listePiecesJointes),
+                options: parse(listeChoix),
+                replySize: tailleReponse,
+                reply: parse(reponse, ({ valeurReponse, avecReponse, estReponseAttendue }) => ({
+                    replyValue: parse(valeurReponse),
+                    withReply: avecReponse,
+                    isExpectedReply: estReponseAttendue
+                })),
+                replyKind: genreReponse,
+                maxReplyNumber: nombreReponsesMax,
+                withMaximum: avecMaximum
             }))
         }))
     };

@@ -21,6 +21,12 @@ async function infos(session, user)
             author: info.author.name,
             content: fromHTML(info.content[0].text),
             htmlContent: info.content[0].text,
+            options: info.content[0].options,
+            replySize: info.content[0].replySize,
+            reply: info.content[0].reply,
+            replyKind: info.content[0].replyKind,
+            maxReplyNumber: info.content[0].maxReplyNumber,
+            withMaximum: info.content[0].withMaximum,
             files: info.content[0].files.map(f => withId({ name: f.name, url: getFileURL(session, f) }, ['name']))
         }, ['date', 'title']));
     }
