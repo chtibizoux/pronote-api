@@ -1,4 +1,5 @@
 const getMessageList = require('./pronote/messageList');
+const { checkDuplicates } = require('../data/id');
 // eslint-disable-next-line max-len
 async function messageList(session, user, ownMessages = [], markAsRead = true, viewedMessagesNumber = 30, isNotPossessed = false)
 {
@@ -7,7 +8,7 @@ async function messageList(session, user, ownMessages = [], markAsRead = true, v
     if (!list) {
         return null;
     }
-
+    list.messageList = checkDuplicates(list.messageList);
     return list;
 }
 
