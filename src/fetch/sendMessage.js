@@ -1,9 +1,9 @@
 const setSendMessage = require('./pronote/sendMessage');
 // eslint-disable-next-line max-len
-async function sendMessage(session, user, ownMessages = [], recipients = [], markAsRead = true, viewedMessagesNumber = 30, isNotPossessed = false)
+async function sendMessage(session, user, responceMessage = {}, recipients = [], content = '', private = false, object = '', files = [])
 {
     // eslint-disable-next-line max-len
-    const message = await setSendMessage(session, user, ownMessages, recipients, markAsRead, viewedMessagesNumber, isNotPossessed);
+    const message = await setSendMessage(session, user, responceMessage, recipients, content, private, object, files);
     if (!message) {
         return null;
     }
