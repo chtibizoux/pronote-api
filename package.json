@@ -23,7 +23,7 @@
     "author": "Adrien 'Litarvan' Navratil <adrien1975@live.fr>",
     "license": "MIT",
     "repository": {
-        "url": "https://github.com/Litarvan/pronote-api.git",
+        "url": "https://github.com/chtibizoux/pronote-api.git",
         "type": "git"
     },
     "bin": {
